@@ -4,7 +4,9 @@ The collection of all the practiced RL projects
 Stages A–B: RL mechanics + tabular RL — ~6 levels
     Level 1: Two-Aremed Bandit
     Level 2: Episodic 1D GridWorld with a random policy
-    
+    Level 3: Monte Carlo State-Value Estimation
+    Level 4: Monte Carlo Action-Value Estimation and Policy Improvement
+
 Stage C: Gymnasium — ~2 levels
 Stage D: Neural-network RL basics — ~3 levels
 Stage E: Policy gradients / REINFORCE — ~3 levels

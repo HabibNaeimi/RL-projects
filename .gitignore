@@ -31,3 +31,6 @@ Thumbs.db
 build/
 dist/
 *.egg-info/
+
+# the darft file
+garbeg.ipynb
