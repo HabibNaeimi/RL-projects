@@ -1,18 +1,23 @@
 # RL-projects
-The collection of all the practiced RL projects 
+The collection of all the practiced RL projects
 
-Stages A–B: RL mechanics + tabular RL — ~6 levels
-    Level 1: Two-Aremed Bandit
-    Level 2: Episodic 1D GridWorld with a random policy
-    Level 3: Monte Carlo State-Value Estimation
-    Level 4: Monte Carlo Action-Value Estimation and Policy Improvement
+* **Stages A-B: RL mechanics + tabular RL – 6 levels**
+  * Level 1: Two-Armed Bandit
+  * Level 2: Episodic 1D GridWorld with a random policy
+  * Level 3: Monte Carlo State-Value Estimation
+  * Level 4: Monte Carlo Action-Value Estimation and Policy Improvement
+  * Level 5: Q-Learning: Learning from One Step at a Time
+  * Level 6: SARSA: On-Policy Temporal-Difference Control
 
-Stage C: Gymnasium — ~2 levels
-Stage D: Neural-network RL basics — ~3 levels
-Stage E: Policy gradients / REINFORCE — ~3 levels
-Stage F: Actor-Critic + PPO — ~4–5 levels
-Stage G: RL → LLM transition — ~2–3 levels
-Stage H: LLM post-training tooling — ~2 levels
-Stage I: RLHF / RLAIF / RLVR — ~2 levels
-Stage J: actual miniature RLVR fine-tuning — ~3–4 levels
-Stage K: research/thesis-level code — ongoing
+* **Stage C: Gymnasium – 2 levels**
+  * Level 7: Gymnasium: Using a Standard RL Environment
+  * Level 8: Q-Learning with Gymnasium: FrozenLake
+
+* **Stage D:** Neural-network RL basics – ~3 levels
+* **Stage E:** Policy gradients / REINFORCE – ~3 levels
+* **Stage F:** Actor-Critic + PPO – ~4-5 levels
+* **Stage G:** RL → LLM transition – ~2-3 levels
+* **Stage H:** LLM post-training tooling – ~2 levels
+* **Stage I:** RLHF / RLAIF / RLVR – ~2 levels
+* **Stage J:** actual miniature RLVR fine-tuning – ~3-4 levels
+* **Stage K:** research/thesis-level code – ongoing
