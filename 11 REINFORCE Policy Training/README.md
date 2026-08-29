@@ -1,9 +1,9 @@
-# CartPole with REINFORCE Policy Training
+# CartPole with Training REINFORCE Policy 
 
 Stage D: Neural-network RL basics – ~3 levels
     Level 11: Train REINFORCE Across Episodes
 
-Implementing One REINFORCE Policy Update policy using torch and Gymnasium on CartPole-v1: environment.
+Implementing REINFORCE Policy Training using torch and Gymnasium on CartPole-v1: environment.
 We're doing on-policy learning here, because the training data comes from the policy currently being optimized.
 
 ------------------------------------
