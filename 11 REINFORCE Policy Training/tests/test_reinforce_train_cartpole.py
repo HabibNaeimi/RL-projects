@@ -3,7 +3,7 @@ import numpy as np
 import pytest
 import torch
 
-from reinforced_learning_cartpole import *
+from reinforce_train_cartpole import *
 
 
 @pytest.fixture
