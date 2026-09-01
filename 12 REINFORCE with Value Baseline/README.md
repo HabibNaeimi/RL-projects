@@ -6,7 +6,7 @@ This level adds a value network to REINFORCE. The policy still learns from compl
 
 - Distinguish policy logits from scalar state-value predictions.
 - Train separate policy and value networks.
-- Construct the advantage estimate \(G_t-V_\phi(S_t)\).
+- Construct the advantage estimate $G_t-V_\phi(S_t)$.
 - Detach advantages in the policy loss.
 - Train the value network with mean squared error.
 - Understand why this remains episode-based REINFORCE.
@@ -57,9 +57,9 @@ $$
 
 Its sign has a direct interpretation:
 
-- \(\hat{A}_t>0\): the outcome was better than the critic predicted;
-- \(\hat{A}_t<0\): the outcome was worse than predicted;
-- \(\hat{A}_t\approx0\): the outcome was close to expectation.
+- $\hat{A}_t>0$: the outcome was better than the critic predicted;
+- $\hat{A}_t<0$: the outcome was worse than predicted;
+- $\hat{A}_t\approx0$: the outcome was close to expectation.
 
 ## Policy loss
 
@@ -96,7 +96,7 @@ This loss supplies gradients to the critic independently of the detached policy 
 
 ## Why a baseline helps
 
-Raw REINFORCE weights every log-probability by \(G_t\). The value baseline removes the expected return already attributable to being in state \(S_t\), leaving a more decision-specific signal:
+Raw REINFORCE weights every log-probability by $G_t$. The value baseline removes the expected return already attributable to being in state $S_t$, leaving a more decision-specific signal:
 
 $$
 G_t\quad\longrightarrow\quad G_t-V_\phi(S_t).
@@ -109,7 +109,7 @@ A state-dependent, action-independent baseline preserves the expected policy gra
 | Parameter | Value |
 | --- | ---: |
 | Training episodes | `800` |
-| Discount factor \(\gamma\) | `0.99` |
+| Discount factor $\gamma$ | `0.99` |
 | Policy learning rate | `1e-2` |
 | Value learning rate | `1e-3` |
 | Episodes per update | `1` |
@@ -172,7 +172,7 @@ and confirms that policy-loss backpropagation leaves the value predictions untou
 
 ## Scope
 
-This is REINFORCE with a learned Monte Carlo baseline, not online TD actor–critic. Updates still wait for a complete episode, and the critic target is \(G_t\), not a bootstrapped one-step target. Advantages are not normalized, and only one episode is used per update.
+This is REINFORCE with a learned Monte Carlo baseline, not online TD actor–critic. Updates still wait for a complete episode, and the critic target is $G_t$, not a bootstrapped one-step target. Advantages are not normalized, and only one episode is used per update.
 
 Evaluation samples from the stochastic policy rather than choosing `argmax` actions.
 

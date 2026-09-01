@@ -43,14 +43,14 @@ $$
 y_t=R_{t+1}.
 $$
 
-Let \(d_t=1\) when the transition truly terminates and \(d_t=0\) otherwise. The implementation combines both cases as
+Let $d_t=1$ when the transition truly terminates and $d_t=0$ otherwise. The implementation combines both cases as
 
 $$
 y_t=R_{t+1}
 +\gamma(1-d_t)V_\phi(S_{t+1})^{\mathrm{detach}}.
 $$
 
-The next-state value is detached because it is a fixed bootstrap target for this update. Gradients should train the current prediction \(V_\phi(S_t)\), not move the target through \(V_\phi(S_{t+1})\).
+The next-state value is detached because it is a fixed bootstrap target for this update. Gradients should train the current prediction $V_\phi(S_t)$, not move the target through $V_\phi(S_{t+1})$.
 
 ## TD error
 
@@ -79,7 +79,7 @@ L_{\text{actor}}
 \left(\pi_\theta(\cdot\mid S_t)\right).
 $$
 
-Detachment prevents actor-loss backpropagation from updating the critic. The entropy coefficient is \(\beta=0.01\).
+Detachment prevents actor-loss backpropagation from updating the critic. The entropy coefficient is $\beta=0.01$.
 
 ## Critic loss
 
@@ -96,16 +96,16 @@ This loss updates the critic toward the detached TD target.
 
 For every environment step:
 
-1. sample \(A_t\) from the actor;
-2. predict \(V_\phi(S_t)\);
-3. execute the action and observe \(R_{t+1},S_{t+1}\);
-4. predict and detach \(V_\phi(S_{t+1})\) through the TD target;
-5. compute \(y_t\) and \(\delta_t\);
+1. sample $A_t$ from the actor;
+2. predict $V_\phi(S_t)$;
+3. execute the action and observe $R_{t+1},S_{t+1}$;
+4. predict and detach $V_\phi(S_{t+1})$ through the TD target;
+5. compute $y_t$ and $\delta_t$;
 6. compute actor and critic losses;
 7. clear both optimizers' gradients;
 8. backpropagate both losses;
 9. step both optimizers;
-10. continue from \(S_{t+1}\).
+10. continue from $S_{t+1}$.
 
 Unlike Levels 10–13, learning does not wait for the episode to finish.
 
@@ -131,8 +131,8 @@ This distinction avoids treating a time limit as if the future value were necess
 | Parameter | Value |
 | --- | ---: |
 | Training episodes | `1000` |
-| Discount factor \(\gamma\) | `0.99` |
-| Entropy coefficient \(\beta\) | `0.01` |
+| Discount factor $\gamma$ | `0.99` |
+| Entropy coefficient $\beta$ | `0.01` |
 | Actor learning rate | `1e-3` |
 | Critic learning rate | `1e-3` |
 | Update frequency | Every environment step |
@@ -151,7 +151,7 @@ actor_critic_td0_cartpole.png
 
 | Property | REINFORCE with baseline | Online actor–critic TD(0) |
 | --- | --- | --- |
-| Critic target | Full return \(G_t\) | \(R_{t+1}+\gamma V(S_{t+1})\) |
+| Critic target | Full return $G_t$ | $R_{t+1}+\gamma V(S_{t+1})$ |
 | Update timing | After the complete episode | After every step |
 | Bootstrapping | No | Yes |
 | Typical target variance | Higher | Lower |
@@ -189,7 +189,7 @@ python -m pytest -q
 
 The tests verify:
 
-- a continuing target of \(1+0.9(4)=4.6\);
+- a continuing target of $1+0.9(4)=4.6$;
 - a terminal target of `1.0`;
 - detachment of both TD targets;
 - exact actor loss, critic loss, and TD error values;

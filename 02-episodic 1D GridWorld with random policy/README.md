@@ -68,13 +68,13 @@ The next state is used to continue the interaction loop, but it is not stored di
 
 ## Discounted returns
 
-The return from time step \(t\) is the discounted sum of all subsequent rewards:
+The return from time step $t$ is the discounted sum of all subsequent rewards:
 
 $$
 G_t=\sum_{k=0}^{T-t-1}\gamma^kR_{t+k+1},
 $$
 
-where \(T\) is the end of the episode and \(\gamma\in[0,1]\) is the discount factor.
+where $T$ is the end of the episode and $\gamma\in[0,1]$ is the discount factor.
 
 The same quantity can be computed backward using the recursion
 
@@ -82,16 +82,16 @@ $$
 G_t=R_{t+1}+\gamma G_{t+1},
 $$
 
-with the last return initialized from the final reward. The notebook uses \(\gamma=0.9\).
+with the last return initialized from the final reward. The notebook uses $\gamma=0.9$.
 
 Because the only positive reward occurs at the goal, transitions closer to that reward receive larger returns. For an episode that reaches the goal in four moves, the rewards and returns are:
 
-| Time step | Reward | Return with \(\gamma=0.9\) |
+| Time step | Reward | Return with $\gamma=0.9$ |
 | ---: | ---: | ---: |
-| 0 | 0 | \(0.9^3=0.729\) |
-| 1 | 0 | \(0.9^2=0.81\) |
-| 2 | 0 | \(0.9\) |
-| 3 | 1 | \(1\) |
+| 0 | 0 | $0.9^3=0.729$ |
+| 1 | 0 | $0.9^2=0.81$ |
+| 2 | 0 | $0.9$ |
+| 3 | 1 | $1$ |
 
 This is temporal credit assignment: an earlier action can receive credit for a reward observed several steps later.
 
@@ -125,7 +125,7 @@ The notebook checks important transitions, including:
 - entry into the terminal goal state;
 - a normal move to the left.
 
-It also prints every trajectory element beside its corresponding return. These two lists must have equal lengths, and the return at index \(t\) must describe the future reward following the transition at index \(t\).
+It also prints every trajectory element beside its corresponding return. These two lists must have equal lengths, and the return at index $t$ must describe the future reward following the transition at index $t$.
 
 ## Expected behavior
 
@@ -135,5 +135,5 @@ No values or policy parameters are updated in this level. The output is experien
 
 ## Main takeaway
 
-In an episodic RL problem, the immediate reward is not the complete learning signal. The return \(G_t\) connects each earlier state–action decision to the rewards that follow it.
+In an episodic RL problem, the immediate reward is not the complete learning signal. The return $G_t$ connects each earlier state–action decision to the rewards that follow it.
 

@@ -45,7 +45,7 @@ The implemented architecture is
 4 observations → Linear(4, 32) → Tanh → Linear(32, 2) → action logits
 ```
 
-For observation \(s\), the policy network produces logits
+For observation $s$, the policy network produces logits
 
 $$
 z_\theta(s)=[z_0,z_1].
@@ -109,7 +109,7 @@ Sampling itself is nondifferentiable. Policy-gradient methods learn through the 
 }
 ```
 
-The stored sequences are time-aligned: index \(t\) describes \(S_t\), \(A_t\), \(R_{t+1}\), and \(\log\pi_\theta(A_t\mid S_t)\).
+The stored sequences are time-aligned: index $t$ describes $S_t$, $A_t$, $R_{t+1}$, and $\log\pi_\theta(A_t\mid S_t)$.
 
 The global seed is `32268`, applied to NumPy and PyTorch; the environment reset also receives this seed.
 
@@ -142,7 +142,7 @@ python -m pytest -q
 The test suite checks that:
 
 - the action is valid;
-- the two probabilities lie in \([0,1]\) and sum to `1`;
+- the two probabilities lie in $[0,1]$ and sum to `1`;
 - `log_prob` is a finite scalar that requires gradients;
 - a diagnostic repeatedly samples 200 actions from the same policy state;
 - episode lists have consistent lengths;

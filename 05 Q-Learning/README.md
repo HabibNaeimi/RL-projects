@@ -1,4 +1,4 @@
-# Level 5: Q-Learning; One-Step Off-Policy TD Control
+# Level 5: Q-Learning: One-Step Off-Policy TD Control
 
 This level replaces episode-end Monte Carlo updates with one-step temporal-difference learning. Q-learning updates an action value immediately after every transition and learns a greedy target policy while the agent continues to explore.
 
@@ -6,7 +6,7 @@ This level replaces episode-end Monte Carlo updates with one-step temporal-diffe
 
 - Understand temporal-difference targets and TD errors.
 - Learn by bootstrapping from the next state's current estimates.
-- Update \(Q(S_t,A_t)\) after every environment step.
+- Update $Q(S_t,A_t)$ after every environment step.
 - Distinguish the exploratory behavior policy from the greedy target policy.
 - Evaluate a learned policy without changing its values.
 
@@ -22,9 +22,9 @@ The same deterministic five-state GridWorld is used:
 | Goal-entry reward | `1` |
 | Other rewards | `0` |
 | Training episodes | `5000` |
-| Learning rate \(\alpha\) | `0.1` |
-| Discount factor \(\gamma\) | `0.9` |
-| Exploration rate \(\varepsilon\) | `0.1` |
+| Learning rate $\alpha$ | `0.1` |
+| Discount factor $\gamma$ | `0.9` |
+| Exploration rate $\varepsilon$ | `0.1` |
 | Maximum steps per episode | `100` |
 
 ## Epsilon-greedy behavior policy
@@ -43,7 +43,7 @@ Random tie-breaking prevents the initial all-zero table from always selecting th
 
 ## Q-learning update
 
-For a nonterminal transition \((S_t,A_t,R_{t+1},S_{t+1})\), the Q-learning target is
+For a nonterminal transition $(S_t,A_t,R_{t+1},S_{t+1})$, the Q-learning target is
 
 $$
 y_t=R_{t+1}+\gamma\max_{a'}Q(S_{t+1},a').
@@ -86,7 +86,7 @@ Q(S_t,A_t)
 R_{t+1}+\gamma\max_{a'}Q(S_{t+1},a').
 $$
 
-It therefore learns from the **difference** between the current estimate and a one-step-ahead target. Unlike Monte Carlo learning, it does not wait for the complete return \(G_t\).
+It therefore learns from the **difference** between the current estimate and a one-step-ahead target. Unlike Monte Carlo learning, it does not wait for the complete return $G_t$.
 
 ## Why Q-learning is off-policy
 
@@ -95,7 +95,7 @@ Two policies appear in the update:
 | Role | Policy |
 | --- | --- |
 | Behavior policy | Epsilon-greedy; generates experience and still explores. |
-| Target policy | Greedy; represented by \(\max_{a'}Q(S_{t+1},a')\). |
+| Target policy | Greedy; represented by $\max_{a'}Q(S_{t+1},a')$. |
 
 The action actually taken next does not determine the target. Q-learning updates toward the best estimated next action even when the behavior policy may explore instead. That separation makes the method off-policy.
 
@@ -103,12 +103,12 @@ The action actually taken next does not determine the target. Q-learning updates
 
 Within each episode, the notebook repeatedly performs:
 
-1. choose \(A_t\) epsilon-greedily;
-2. execute it and observe \(S_{t+1},R_{t+1}\);
+1. choose $A_t$ epsilon-greedily;
+2. execute it and observe $S_{t+1},R_{t+1}$;
 3. calculate the Q-learning target;
-4. calculate \(\delta_t\);
-5. update \(Q(S_t,A_t)\) immediately;
-6. continue from \(S_{t+1}\), unless it is terminal.
+4. calculate $\delta_t$;
+5. update $Q(S_t,A_t)$ immediately;
+6. continue from $S_{t+1}$, unless it is terminal.
 
 The notebook records total episode reward, episode length, and every TD error.
 
@@ -146,7 +146,7 @@ Q(s,\text{RIGHT})>Q(s,\text{LEFT}),
 \qquad s\in\{0,1,2,3\}.
 $$
 
-The transition from state `3` directly into the goal has target \(1\), so its learned value should approach
+The transition from state `3` directly into the goal has target $1$, so its learned value should approach
 
 $$
 Q(3,\text{RIGHT})=1.
@@ -191,5 +191,5 @@ $$
 \text{act}\rightarrow\text{observe one transition}\rightarrow\text{update immediately}.
 $$
 
-The use of \(\max_{a'}Q(S_{t+1},a')\) lets an exploratory agent learn the value of a greedy target policy.
+The use of $\max_{a'}Q(S_{t+1},a')$ lets an exploratory agent learn the value of a greedy target policy.
 

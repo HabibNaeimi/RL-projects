@@ -11,9 +11,9 @@ Unlike later levels, this problem has no states, episodes, or delayed rewards. E
 
 ## Learning objectives
 
-- Represent learned action values as \(Q(a)\).
-- Balance exploration and exploitation with an \(\varepsilon\)-greedy policy.
-- Interpret the prediction error \(R_t-Q_t(A_t)\).
+- Represent learned action values as $Q(a)$.
+- Balance exploration and exploitation with an $\varepsilon$-greedy policy.
+- Interpret the prediction error $R_t-Q_t(A_t)$.
 - Update only the value of the selected action.
 - Verify that repeated interaction improves the agent's behavior.
 
@@ -25,12 +25,12 @@ $$
 R_t \in \{0,1\}.
 $$
 
-Each action has a hidden probability of producing reward \(1\):
+Each action has a hidden probability of producing reward $1$:
 
 | Action | Hidden reward probability |
 | --- | ---: |
-| `0` | \(0.2\) |
-| `1` | \(0.8\) |
+| `0` | $0.2$ |
+| `1` | $0.8$ |
 
 The agent does not receive these probabilities directly. It must estimate them from sampled rewards.
 
@@ -40,11 +40,11 @@ $$
 q_*(a)=\mathbb{E}[R_t\mid A_t=a].
 $$
 
-For this Bernoulli environment, the true values are \(q_*(0)=0.2\) and \(q_*(1)=0.8\).
+For this Bernoulli environment, the true values are $q_*(0)=0.2$ and $q_*(1)=0.8$.
 
 ## Agent
 
-The learned estimate for action \(a\) is denoted by \(Q_t(a)\). Both estimates begin at zero:
+The learned estimate for action $a$ is denoted by $Q_t(a)$. Both estimates begin at zero:
 
 $$
 Q_0(0)=Q_0(1)=0.
@@ -52,7 +52,7 @@ $$
 
 ### Epsilon-greedy action selection
 
-At every step, the agent explores with probability \(\varepsilon\) and otherwise exploits its current estimates:
+At every step, the agent explores with probability $\varepsilon$ and otherwise exploits its current estimates:
 
 $$
 A_t=
@@ -62,11 +62,11 @@ A_t=
 \end{cases}
 $$
 
-This implementation uses \(\varepsilon=0.1\). Ties between the two estimated values are broken randomly.
+This implementation uses $\varepsilon=0.1$. Ties between the two estimated values are broken randomly.
 
 ### Constant-step-size value update
 
-After selecting \(A_t\) and observing \(R_t\), the prediction error is
+After selecting $A_t$ and observing $R_t$, the prediction error is
 
 $$
 \delta_t=R_t-Q_t(A_t).
@@ -84,7 +84,7 @@ $$
 Q_{t+1}(A_t)=Q_t(A_t)+\alpha\left[R_t-Q_t(A_t)\right].
 $$
 
-The learning rate is \(\alpha=0.1\). The value of the action that was not selected remains unchanged.
+The learning rate is $\alpha=0.1$. The value of the action that was not selected remains unchanged.
 
 ## Implementation map
 
@@ -102,8 +102,8 @@ The training configuration is:
 | Parameter | Value |
 | --- | ---: |
 | Training steps | `1000` |
-| Learning rate \(\alpha\) | `0.1` |
-| Exploration rate \(\varepsilon\) | `0.1` |
+| Learning rate $\alpha$ | `0.1` |
+| Exploration rate $\varepsilon$ | `0.1` |
 
 ## Training loop
 
@@ -135,7 +135,7 @@ $$
 
 Consequently, action `1` should be selected much more often and should become the final greedy action. Exact estimates and counts change between runs because rewards, exploration, and tie-breaking are stochastic and no fixed random seed is used.
 
-The final sampling check repeatedly selects action `0`; its empirical mean reward should be close to \(0.2\) when enough samples are collected.
+The final sampling check repeatedly selects action `0`; its empirical mean reward should be close to $0.2$ when enough samples are collected.
 
 ## Main takeaway
 

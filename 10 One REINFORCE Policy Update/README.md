@@ -28,7 +28,7 @@ The configuration is:
 
 | Parameter | Value |
 | --- | ---: |
-| Discount factor \(\gamma\) | `0.99` |
+| Discount factor $\gamma$ | `0.99` |
 | Optimizer | Adam |
 | Learning rate | `1e-2` |
 | Seed | `32268` |
@@ -37,7 +37,7 @@ The configuration is:
 
 ## Discounted returns
 
-For a trajectory of length \(T\), the reward-to-go from step \(t\) is
+For a trajectory of length $T$, the reward-to-go from step $t$ is
 
 $$
 G_t=\sum_{k=t}^{T-1}\gamma^{k-t}R_{k+1}.
@@ -49,7 +49,7 @@ $$
 G_t=R_{t+1}+\gamma G_{t+1}.
 $$
 
-For example, if rewards are `[1, 1, 1]` and \(\gamma=0.5\), then
+For example, if rewards are `[1, 1, 1]` and $\gamma=0.5$, then
 
 $$
 [G_0,G_1,G_2]=[1.75,1.5,1.0].
@@ -75,7 +75,7 @@ L_{\text{policy}}(\theta)
 G_t\log\pi_\theta(A_t\mid S_t).
 $$
 
-When \(G_t>0\), minimizing this loss increases the log-probability of the sampled action. Actions followed by larger returns receive stronger reinforcement.
+When $G_t>0$, minimizing this loss increases the log-probability of the sampled action. Actions followed by larger returns receive stronger reinforcement.
 
 The list of scalar log-probabilities is combined with
 

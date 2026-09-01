@@ -44,7 +44,7 @@ $$
 
 ## Policy entropy
 
-For a discrete policy, entropy at state \(s\) is
+For a discrete policy, entropy at state $s$ is
 
 $$
 \mathcal{H}\!\left(\pi_\theta(\cdot\mid s)\right)
@@ -61,7 +61,7 @@ $$
 | Policy probabilities | Entropy | Interpretation |
 | --- | ---: | --- |
 | `[1.0, 0.0]` or `[0.0, 1.0]` | Approximately `0` | Nearly deterministic |
-| `[0.5, 0.5]` | \(\log2\approx0.693\) | Maximum uncertainty |
+| `[0.5, 0.5]` | $\log2\approx0.693$ | Maximum uncertainty |
 
 `Categorical.entropy()` returns a scalar tensor connected to the policy network. It is stored for every episode step so it can affect the gradient.
 
@@ -76,7 +76,7 @@ L_{\text{policy}}
 \left(\pi_\theta(\cdot\mid S_t)\right),
 $$
 
-where \(\beta\ge0\) is the entropy coefficient. Because the optimizer minimizes the loss, subtracting entropy encourages it to increase.
+where $\beta\ge0$ is the entropy coefficient. Because the optimizer minimizes the loss, subtracting entropy encourages it to increase.
 
 The project uses
 
@@ -84,7 +84,7 @@ $$
 \beta=0.01.
 $$
 
-Setting \(\beta=0\) recovers the Level 12 policy loss. A negative coefficient is rejected with `ValueError` because it would reverse the intended regularization behavior.
+Setting $\beta=0$ recovers the Level 12 policy loss. A negative coefficient is rejected with `ValueError` because it would reverse the intended regularization behavior.
 
 ## Effect of the coefficient
 
@@ -99,8 +99,8 @@ This implementation uses a fixed coefficient; it does not anneal entropy regular
 | Parameter | Value |
 | --- | ---: |
 | Training episodes | `800` |
-| Discount factor \(\gamma\) | `0.99` |
-| Entropy coefficient \(\beta\) | `0.01` |
+| Discount factor $\gamma$ | `0.99` |
+| Entropy coefficient $\beta$ | `0.01` |
 | Policy learning rate | `1e-2` |
 | Value learning rate | `1e-3` |
 | Episodes per update | `1` |
@@ -145,8 +145,8 @@ python -m pytest -q
 The test suite verifies:
 
 - value-network outputs and two-network parameter updates;
-- the Level 12 loss when \(\beta=0\);
-- maximum entropy \(\log2\) for a uniform two-action policy;
+- the Level 12 loss when $\beta=0$;
+- maximum entropy $\log2$ for a uniform two-action policy;
 - the exact entropy-regularized loss for a hand-calculated example;
 - entropy gradients with the correct negative sign;
 - storage, finiteness, scalar shape, and gradient connectivity of episode entropies;

@@ -18,7 +18,7 @@ This level turns the single policy update from Level 10 into a complete on-polic
 | Environment | `CartPole-v1` |
 | Training episodes | `800` |
 | Episodes per update | `1` |
-| Discount factor \(\gamma\) | `0.99` |
+| Discount factor $\gamma$ | `0.99` |
 | Optimizer | Adam |
 | Learning rate | `1e-2` |
 | Report interval | `50` episodes |
@@ -74,7 +74,7 @@ The collected log-probabilities describe the policy that generated that episode.
 
 ## Reproducible episode seeds
 
-When `base_seed` is provided, training episode \(i\) uses
+When `base_seed` is provided, training episode $i$ uses
 
 $$
 \text{episode seed}_i=\text{base seed}+i.
@@ -95,7 +95,7 @@ This gives each episode a different initial environment state while keeping the 
 
 Every 50 episodes, it prints the mean of the most recent returns and the newest policy loss.
 
-The moving average for window size \(W\) is
+The moving average for window size $W$ is
 
 $$
 \bar{R}_i=\frac{1}{W}\sum_{j=i-W+1}^{i}R_j.

@@ -4,7 +4,7 @@ This level uses complete episodes to estimate how valuable each state is under t
 
 ## Learning objectives
 
-- Understand the state-value function \(V_\pi(s)\).
+- Understand the state-value function $V_\pi(s)$.
 - Use complete sampled returns as learning targets.
 - Implement every-visit Monte Carlo prediction.
 - Update sample means incrementally without storing all past returns.
@@ -21,7 +21,7 @@ The same five-state GridWorld is used:
 | Actions | `LEFT = 0`, `RIGHT = 1` |
 | Nonterminal reward | `0` |
 | Goal-entry reward | `1` |
-| Discount factor | \(\gamma=0.9\) |
+| Discount factor | $\gamma=0.9$ |
 | Policy | 50/50 random |
 
 The policy remains
@@ -34,7 +34,7 @@ for both actions in every nonterminal state. Since the policy is fixed, this lev
 
 ## State-value function
 
-The value of state \(s\) under policy \(\pi\) is the expected return after visiting that state and then following \(\pi\):
+The value of state $s$ under policy $\pi$ is the expected return after visiting that state and then following $\pi$:
 
 $$
 V_\pi(s)=\mathbb{E}_\pi\left[G_t\mid S_t=s\right].
@@ -46,11 +46,11 @@ $$
 G_t=R_{t+1}+\gamma R_{t+2}+\gamma^2R_{t+3}+\cdots.
 $$
 
-Monte Carlo prediction treats \(G_t\) as a sample target for \(V_\pi(S_t)\).
+Monte Carlo prediction treats $G_t$ as a sample target for $V_\pi(S_t)$.
 
 ## Every-visit Monte Carlo update
 
-Every occurrence of a state in an episode is used. If state \(s\) appears several times in the same trajectory, each visit produces a separate update.
+Every occurrence of a state in an episode is used. If state $s$ appears several times in the same trajectory, each visit produces a separate update.
 
 For every visited state:
 
@@ -62,17 +62,17 @@ $$
 V(s)\leftarrow V(s)+\frac{G_t-V(s)}{N(s)}.
 $$
 
-This is an incremental sample mean. After \(N(s)\) visits, it is equivalent to averaging all returns previously observed after visits to \(s\):
+This is an incremental sample mean. After $N(s)$ visits, it is equivalent to averaging all returns previously observed after visits to $s$:
 
 $$
 V(s)=\frac{1}{N(s)}\sum_{i=1}^{N(s)}G_i(s).
 $$
 
-The difference \(G_t-V(s)\) is the current value-prediction error. The effective learning rate \(1/N(s)\) becomes smaller as more evidence is collected.
+The difference $G_t-V(s)$ is the current value-prediction error. The effective learning rate $1/N(s)$ becomes smaller as more evidence is collected.
 
 ## Why complete episodes are required
 
-The target \(G_t\) contains all rewards from time \(t\) to the end of the episode. Therefore, the notebook first generates a trajectory, then computes its returns backward, and only then updates \(V\).
+The target $G_t$ contains all rewards from time $t$ to the end of the episode. Therefore, the notebook first generates a trajectory, then computes its returns backward, and only then updates $V$.
 
 This method does not bootstrap: its target does not contain another learned value estimate.
 
@@ -81,7 +81,7 @@ This method does not bootstrap: its target does not contain another learned valu
 | Function or array | Purpose |
 | --- | --- |
 | `run_episode()` | Generates experience under the random policy. |
-| `compute_returns(...)` | Calculates \(G_t\) for every transition. |
+| `compute_returns(...)` | Calculates $G_t$ for every transition. |
 | `V` | Stores one estimated value per state. |
 | `visit_counts` | Stores the number of updates made for each state. |
 | `update_values_from_episode(...)` | Applies every-visit incremental-mean updates. |

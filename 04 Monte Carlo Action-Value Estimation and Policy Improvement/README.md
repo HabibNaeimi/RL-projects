@@ -1,10 +1,10 @@
 # Level 4: Monte Carlo Action-Value Estimation and Policy Improvement
 
-This level extends Monte Carlo prediction from state values \(V(s)\) to action values \(Q(s,a)\). Estimating actions separately makes it possible to derive a greedy policy and compare it with the random behavior policy.
+This level extends Monte Carlo prediction from state values $V(s)$ to action values $Q(s,a)$. Estimating actions separately makes it possible to derive a greedy policy and compare it with the random behavior policy.
 
 ## Learning objectives
 
-- Understand the action-value function \(Q_\pi(s,a)\).
+- Understand the action-value function $Q_\pi(s,a)$.
 - Implement every-visit Monte Carlo updates for state–action pairs.
 - Extract a greedy action from learned action values.
 - Perform policy improvement after evaluating a fixed policy.
@@ -21,7 +21,7 @@ The notebook retains the five-state GridWorld from Levels 2 and 3:
 | Terminal goal | `4` |
 | Actions | `LEFT = 0`, `RIGHT = 1` |
 | Reward | `1` when entering the goal; otherwise `0` |
-| Discount factor | \(\gamma=0.9\) |
+| Discount factor | $\gamma=0.9$ |
 | Data-generating policy | 50/50 random |
 
 The action-value and count tables have shape
@@ -32,13 +32,13 @@ $$
 
 ## Action-value function
 
-For a policy \(\pi\), the value of selecting action \(a\) in state \(s\) and then continuing under \(\pi\) is
+For a policy $\pi$, the value of selecting action $a$ in state $s$ and then continuing under $\pi$ is
 
 $$
 Q_\pi(s,a)=\mathbb{E}_\pi\left[G_t\mid S_t=s,A_t=a\right].
 $$
 
-Unlike \(V_\pi(s)\), which averages over the policy's possible actions, \(Q_\pi(s,a)\) preserves the value of each decision separately.
+Unlike $V_\pi(s)$, which averages over the policy's possible actions, $Q_\pi(s,a)$ preserves the value of each decision separately.
 
 ## Every-visit Monte Carlo action-value update
 
@@ -48,7 +48,7 @@ $$
 G_t=R_{t+1}+\gamma G_{t+1}
 $$
 
-backward through the trajectory. For every visited pair \((S_t,A_t)\), it applies
+backward through the trajectory. For every visited pair $(S_t,A_t)$, it applies
 
 $$
 N(S_t,A_t)\leftarrow N(S_t,A_t)+1,
@@ -63,7 +63,7 @@ This is an incremental average of all returns observed after that state–action
 
 ## Policy improvement
 
-Once \(Q\) has been estimated, the greedy action in each nonterminal state is
+Once $Q$ has been estimated, the greedy action in each nonterminal state is
 
 $$
 \pi_{\text{greedy}}(s)=\arg\max_a Q(s,a).
@@ -125,7 +125,7 @@ jupyter notebook "04 Monte Carlo Action-Value Estimation and Policy Improvement/
 
 - Visit counts grow for both actions because the training policy is random.
 - Estimates near the goal stabilize faster because their returns depend on fewer future transitions.
-- For each nonterminal state, \(Q(s,\text{RIGHT})\) should eventually exceed \(Q(s,\text{LEFT})\).
+- For each nonterminal state, $Q(s,\text{RIGHT})$ should eventually exceed $Q(s,\text{LEFT})$.
 - The extracted greedy policy should move right.
 - Greedy evaluation should reach the goal in four steps, compared with a longer average trajectory under the random policy.
 
