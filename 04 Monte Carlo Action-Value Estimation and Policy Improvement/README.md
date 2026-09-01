@@ -1,4 +1,4 @@
-# Level 4 — Monte Carlo Action-Value Estimation and Policy Improvement
+# Level 4: Monte Carlo Action-Value Estimation and Policy Improvement
 
 This level extends Monte Carlo prediction from state values \(V(s)\) to action values \(Q(s,a)\). Estimating actions separately makes it possible to derive a greedy policy and compare it with the random behavior policy.
 

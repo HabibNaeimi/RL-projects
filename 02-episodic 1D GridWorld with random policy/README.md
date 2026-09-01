@@ -1,4 +1,4 @@
-# Level 2 — Episodic 1D GridWorld with a Random Policy
+# Level 2: Episodic 1D GridWorld with a Random Policy
 
 This level moves from a stateless bandit to an episodic environment with states, actions, terminal transitions, trajectories, and delayed returns. The policy is intentionally random: the objective is to understand how experience is represented before introducing value learning.
 

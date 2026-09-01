@@ -1,4 +1,4 @@
-# Level 12 — REINFORCE with a Learned Value Baseline
+# Level 12: REINFORCE with a Learned Value Baseline
 
 This level adds a value network to REINFORCE. The policy still learns from complete-episode Monte Carlo returns, but each return is compared with the critic's prediction to form an advantage estimate. The baseline aims to reduce policy-gradient variance without changing which actions are preferred in expectation.
 
@@ -69,7 +69,7 @@ $$
 L_{\text{policy}}(\theta)
 =-\sum_{t=0}^{T-1}
 \log\pi_\theta(A_t\mid S_t)
-\operatorname{stopgrad}(\hat{A}_t).
+\hat{A}_t^{\mathrm{detach}}.
 $$
 
 In code:
@@ -183,4 +183,3 @@ The value network does not choose actions. It evaluates the current situation so
 $$
 \boxed{\hat{A}_t=G_t-V_\phi(S_t)}.
 $$
-

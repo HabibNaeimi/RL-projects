@@ -1,4 +1,4 @@
-# Level 13 — REINFORCE with a Value Baseline and Entropy Bonus
+# Level 13: REINFORCE with a Value Baseline and Entropy Bonus
 
 This level extends Level 12 by adding policy entropy to the actor loss. The value baseline supplies a lower-variance learning signal, while the entropy bonus discourages the categorical policy from becoming deterministic too early.
 
@@ -31,7 +31,7 @@ $$
 L_{\text{REINFORCE}}
 =-\sum_t
 \log\pi_\theta(A_t\mid S_t)
-\operatorname{stopgrad}(\hat{A}_t).
+\hat{A}_t^{\mathrm{detach}}.
 $$
 
 The value network is trained with
@@ -169,8 +169,7 @@ The policy is now optimized for both return-informed behavior and controlled unc
 $$
 \boxed{
 L_{\text{policy}}
-=-\sum_t\log\pi_\theta(A_t\mid S_t)\hat{A}_t
+=-\sum_t\log\pi_\theta(A_t\mid S_t)\hat{A}_t^{\mathrm{detach}}
 -\beta\sum_t\mathcal{H}_t
 }.
 $$
-

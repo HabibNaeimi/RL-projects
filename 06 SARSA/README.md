@@ -1,4 +1,4 @@
-# Level 6 — SARSA: On-Policy Temporal-Difference Control
+# Level 6: SARSA: On-Policy Temporal-Difference Control
 
 This level implements SARSA, a one-step temporal-difference control algorithm. Like Q-learning, SARSA learns online after each transition. Its defining difference is that the update uses the value of the **next action actually selected by the current behavior policy**.
 

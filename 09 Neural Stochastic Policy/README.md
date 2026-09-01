@@ -1,4 +1,4 @@
-# Level 9 — Neural Stochastic Policy with PyTorch
+# Level 9: Neural Stochastic Policy with PyTorch
 
 This level replaces a tabular action-selection rule with a neural stochastic policy for `CartPole-v1`. It focuses on the forward pass, categorical action sampling, log-probabilities, trajectory collection, and autograd connectivity. No policy optimization is performed yet.
 

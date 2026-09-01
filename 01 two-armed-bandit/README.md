@@ -1,4 +1,4 @@
-# Level 1 — Two-Action Stochastic Bandit
+# Level 1: Two-Action Stochastic Bandit
 
 This level implements a two-action multi-armed bandit from scratch using only Python. It introduces the smallest complete reinforcement-learning loop:
 

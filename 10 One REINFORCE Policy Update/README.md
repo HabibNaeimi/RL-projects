@@ -1,4 +1,4 @@
-# Level 10 — One REINFORCE Policy Update on CartPole
+# Level 10: One REINFORCE Policy Update on CartPole
 
 This level takes the stochastic policy from Level 9 and performs one complete REINFORCE update. It connects episode rewards to stored action log-probabilities, computes discounted returns, backpropagates the policy-gradient loss, and verifies that the policy parameters change.
 

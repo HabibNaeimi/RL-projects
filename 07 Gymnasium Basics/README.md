@@ -1,4 +1,4 @@
-# Level 7 — Gymnasium Basics with FrozenLake
+# Level 7: Gymnasium Basics with FrozenLake
 
 This level introduces the Gymnasium environment API through random interaction with `FrozenLake-v1`. There is deliberately no learning algorithm yet: the objective is to understand observations, actions, rewards, episode boundaries, and the return values of `reset()` and `step()`.
 

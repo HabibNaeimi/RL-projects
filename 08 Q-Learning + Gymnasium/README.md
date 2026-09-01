@@ -1,4 +1,4 @@
-# Level 8 — Q-Learning with Gymnasium: FrozenLake
+# Level 8: Q-Learning with Gymnasium: FrozenLake
 
 This level combines the Gymnasium interaction loop from Level 7 with tabular Q-learning. The agent learns action values for deterministic `FrozenLake-v1`, explores with an epsilon-greedy behavior policy, and is evaluated using the learned greedy policy.
 

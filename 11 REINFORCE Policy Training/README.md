@@ -1,4 +1,4 @@
-# Level 11 — Training REINFORCE Across Episodes
+# Level 11: Training REINFORCE Across Episodes
 
 This level turns the single policy update from Level 10 into a complete on-policy training experiment on `CartPole-v1`. Each episode is collected with the current policy, used for one REINFORCE update, and then discarded before the next episode is generated.
 
@@ -111,9 +111,9 @@ reinforce_learning_curve.png
 
 Evaluation uses a separate CartPole environment and runs inside `torch.no_grad()`, so no computation graph or gradient update is created. The evaluation seeds begin after the training range:
 
-$$
-\text{evaluation base seed}=\text{SEED}+\text{NUM_EPISODES}.
-$$
+```python
+base_seed = SEED + NUM_EPISODES
+```
 
 Actions are still sampled from the learned categorical policy. Evaluation is therefore stochastic-policy evaluation, not greedy `argmax` evaluation.
 
@@ -162,4 +162,3 @@ Returns should show whether the policy is learning, but the curve may be noisy o
 ## Main takeaway
 
 REINFORCE can train a neural policy using only sampled trajectories and returns, but its Monte Carlo gradient estimate can have high variance. Level 12 introduces a learned state-value baseline to improve the learning signal.
-

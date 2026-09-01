@@ -1,4 +1,4 @@
-# Level 14 — Online Actor–Critic with One-Step TD(0)
+# Level 14: Online Actor–Critic with One-Step TD(0)
 
 This level replaces complete-episode Monte Carlo targets with a bootstrapped one-step TD target. The policy becomes the actor, the value network becomes the critic, and both networks are updated after every environment transition.
 
@@ -43,12 +43,11 @@ $$
 y_t=R_{t+1}.
 $$
 
-The implementation combines both cases as
+Let \(d_t=1\) when the transition truly terminates and \(d_t=0\) otherwise. The implementation combines both cases as
 
 $$
 y_t=R_{t+1}
-+\gamma\left(1-\mathbb{1}[\text{terminated}_t]\right)
-\operatorname{stopgrad}\left(V_\phi(S_{t+1})\right).
++\gamma(1-d_t)V_\phi(S_{t+1})^{\mathrm{detach}}.
 $$
 
 The next-state value is detached because it is a fixed bootstrap target for this update. Gradients should train the current prediction \(V_\phi(S_t)\), not move the target through \(V_\phi(S_{t+1})\).
@@ -75,7 +74,7 @@ The actor uses the detached TD error:
 $$
 L_{\text{actor}}
 =-\log\pi_\theta(A_t\mid S_t)
-\operatorname{stopgrad}(\delta_t)
+\delta_t^{\mathrm{detach}}
 -\beta\mathcal{H}
 \left(\pi_\theta(\cdot\mid S_t)\right).
 $$
@@ -216,4 +215,3 @@ $$
 $$
 
 This changes the learning pattern from complete-episode Monte Carlo updates to online bootstrapped learning.
-

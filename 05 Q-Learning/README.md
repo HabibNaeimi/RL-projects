@@ -1,4 +1,4 @@
-# Level 5 — Q-Learning: One-Step Off-Policy TD Control
+# Level 5: Q-Learning; One-Step Off-Policy TD Control
 
 This level replaces episode-end Monte Carlo updates with one-step temporal-difference learning. Q-learning updates an action value immediately after every transition and learns a greedy target policy while the agent continues to explore.
 

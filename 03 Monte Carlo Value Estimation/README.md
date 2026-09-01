@@ -1,4 +1,4 @@
-# Level 3 — Every-Visit Monte Carlo State-Value Estimation
+# Level 3: Every-Visit Monte Carlo State-Value Estimation
 
 This level uses complete episodes to estimate how valuable each state is under the fixed random policy from Level 2. It implements **Monte Carlo prediction**: learning a value function for a policy without changing that policy.
 
