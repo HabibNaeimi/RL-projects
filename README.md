@@ -22,9 +22,16 @@ The collection of all my practiced RL projects
   * [Level 12: REINFORCE with a Learned Value Baseline](./12%20REINFORCE%20with%20Value%20Baseline/)
   * [Level 13: REINFORCE with an Entropy Bonus](./13%20REINFORCE%20with%20an%20Entropy%20Bonus/)
 
-* **Stage F: Actor-Critic + PPO – ~4-5 levels**
+* **Stage F: Actor-Critic + PPO – 9 levels**
   * [Level 14: Online Actor–Critic with One-Step TD Error](./14%20Online%20Actor-Critic%20TD0/)
-  * Level 15: Generalized Advantage Estimation (GAE)
+  * [Level 15: Generalized Advantage Estimation (GAE)](./15%20Generalized%20Advantage%20Estimation%20(GAE)/)
+  * [Level 16: PPO Probability Ratios and Clipped Policy Updates](./16%20PPO%20Clipped%20Objective/)
+  * [Level 17: Fixed-Length PPO Rollouts and Boundary-Aware GAE](./17%20Fixed-Length%20PPO%20Rollouts/)
+  * [Level 18: PPO with Shuffled Minibatch Updates](./18%20PPO%20with%20Shuffled%20Minibatch%20Updates/)
+  * [Level 19: PPO with Vectorized Environments](./19%20PPO%20with%20Vectorized%20Environments/)
+  * [Level 20: PPO KL Diagnostics and Early Stopping](./20%20PPO%20KL%20Diagnostics%20and%20Early%20Stopping/)
+  * Level 21: PPO Gradient Clipping
+
 
 * **Stage G:** RL → LLM transition – ~2-3 levels
 * **Stage H:** LLM post-training tooling – ~2 levels
